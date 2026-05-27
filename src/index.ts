@@ -7,6 +7,7 @@ import { ConsoleNotifier, type Notifier } from "./core/notifier.js";
 import { TelegramAlertBot } from "./integrations/telegramBot.js";
 import { WhatsAppClient } from "./integrations/whatsappClient.js";
 import { PatternMemory } from "./learning/patternMemory.js";
+import { GroupRegistry } from "./storage/groupRegistry.js";
 import { JsonlStore } from "./storage/jsonlStore.js";
 import { Logger } from "./utils/logger.js";
 
@@ -22,7 +23,10 @@ async function main(): Promise<void> {
   const memory = new PatternMemory(env.dataDir);
   await memory.init();
 
-  const telegram = new TelegramAlertBot(env, configService, store, memory, logger);
+  const groupRegistry = new GroupRegistry(env.dataDir);
+  await groupRegistry.init();
+
+  const telegram = new TelegramAlertBot(env, configService, store, memory, groupRegistry, logger);
   telegram.start();
 
   const notifier: Notifier = env.telegramBotToken ? telegram : new ConsoleNotifier();
@@ -39,7 +43,7 @@ async function main(): Promise<void> {
     env.defaultTimezone
   );
 
-  const whatsapp = new WhatsAppClient(env, processor, logger);
+  const whatsapp = new WhatsAppClient(env, processor, groupRegistry, logger);
   whatsapp.start();
 
   logger.info("BOT Jodita started", {

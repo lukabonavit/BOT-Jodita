@@ -77,6 +77,7 @@ Comandos incluidos:
 - `/watchgroups remove Nombre Grupo`
 - `/watchgroups all on`
 - `/watchgroups all off`
+- `/whatsappgroups`
 - `/memory`
 
 ## WhatsApp Web

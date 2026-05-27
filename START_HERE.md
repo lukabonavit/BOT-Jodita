@@ -259,6 +259,7 @@ BOT Jodita deberia mandar alerta critica a Telegram.
 - `/watchgroups remove Nombre exacto o parcial del grupo`
 - `/watchgroups all on`
 - `/watchgroups all off`
+- `/whatsappgroups`
 - `/memory`
 
 ## Preguntas comunes
@@ -338,6 +339,7 @@ Reglas:
 Tambien podes manejarlo desde Telegram:
 
 ```text
+/whatsappgroups
 /watchgroups add Nombre del grupo
 /watchgroups remove Nombre del grupo
 /mute Nombre del grupo

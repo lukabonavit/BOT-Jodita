@@ -6,6 +6,7 @@ dist/
 data/*.jsonl
 data/*.log
 data/learned-patterns.json
+data/whatsapp-groups.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

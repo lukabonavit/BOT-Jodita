@@ -2,6 +2,7 @@ import qrcode from "qrcode-terminal";
 import { Client, LocalAuth, type Message } from "whatsapp-web.js";
 import type { RuntimeEnv } from "../core/types.js";
 import { MessageProcessor } from "../core/messageProcessor.js";
+import { GroupRegistry } from "../storage/groupRegistry.js";
 import { Logger } from "../utils/logger.js";
 
 export class WhatsAppClient {
@@ -10,6 +11,7 @@ export class WhatsAppClient {
   constructor(
     private readonly env: RuntimeEnv,
     private readonly processor: MessageProcessor,
+    private readonly groupRegistry: GroupRegistry,
     private readonly logger: Logger
   ) {
     this.client = new Client({
@@ -35,6 +37,7 @@ export class WhatsAppClient {
 
     this.client.on("ready", () => {
       this.logger.info("WhatsApp Web ready");
+      void this.refreshKnownGroups();
     });
 
     this.client.on("auth_failure", (message) => {
@@ -56,6 +59,11 @@ export class WhatsAppClient {
     try {
       const chat = await message.getChat();
       if (!chat.isGroup) return;
+      await this.groupRegistry.observe({
+        id: chat.id._serialized,
+        name: chat.name,
+        last_seen: new Date().toISOString()
+      });
 
       const contact = await message.getContact();
       await this.processor.process({
@@ -70,6 +78,25 @@ export class WhatsAppClient {
       });
     } catch (error) {
       this.logger.error("Failed to process WhatsApp message", {
+        error: error instanceof Error ? error.message : String(error)
+      });
+    }
+  }
+
+  private async refreshKnownGroups(): Promise<void> {
+    try {
+      const chats = await this.client.getChats();
+      const groups = chats
+        .filter((chat) => chat.isGroup)
+        .map((chat) => ({
+          id: chat.id._serialized,
+          name: chat.name,
+          last_seen: new Date().toISOString()
+        }));
+      await this.groupRegistry.replace(groups);
+      this.logger.info("WhatsApp groups loaded", { count: groups.length });
+    } catch (error) {
+      this.logger.warn("Could not list WhatsApp groups", {
         error: error instanceof Error ? error.message : String(error)
       });
     }

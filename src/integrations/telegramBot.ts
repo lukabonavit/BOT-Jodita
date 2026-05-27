@@ -9,6 +9,7 @@ import type {
 import type { Notifier } from "../core/notifier.js";
 import { ConfigService } from "../config/configService.js";
 import { PatternMemory } from "../learning/patternMemory.js";
+import { GroupRegistry } from "../storage/groupRegistry.js";
 import { JsonlStore } from "../storage/jsonlStore.js";
 import { Logger } from "../utils/logger.js";
 
@@ -43,6 +44,7 @@ export class TelegramAlertBot implements Notifier {
     private readonly configService: ConfigService,
     private readonly store: JsonlStore,
     private readonly memory: PatternMemory,
+    private readonly groupRegistry: GroupRegistry,
     private readonly logger: Logger
   ) {
     this.bot = env.telegramBotToken
@@ -304,6 +306,15 @@ export class TelegramAlertBot implements Notifier {
           `Muted groups: ${config.groups.muted_groups.join(", ") || "-"}`
         ].join("\n")
       );
+    });
+
+    this.bot.onText(/^\/whatsappgroups$/, async (msg) => {
+      const groups = this.groupRegistry.list();
+      const text =
+        groups.length === 0
+          ? "Todavia no tengo grupos de WhatsApp registrados. Inicia WhatsApp, espera a que diga ready y volve a probar."
+          : groups.map((group, index) => `${index + 1}. ${group.name}`).join("\n");
+      await this.bot?.sendMessage(msg.chat.id, clampTelegram(text));
     });
 
     this.bot.onText(/^\/memory$/, async (msg) => {
