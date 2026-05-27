@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Mandarine",
+    "aliases": ["mandarine", "mandarina"],
+    "priority": "critical",
+    "score_boost": 2
+  },
+  {
+    "name": "Mandarine Park",
+    "aliases": ["mandarine park", "mandarinepark", "mandarina park"],
+    "priority": "critical",
+    "score_boost": 2
+  },
+  {
+    "name": "Mandarine Tent",
+    "aliases": ["mandarine tent", "mandarine carpa", "tent"],
+    "priority": "critical",
+    "score_boost": 2
+  },
+  {
+    "name": "BOMBO",
+    "aliases": ["bombo", "app bombo", "bombo app", "wearebombo"],
+    "priority": "critical",
+    "score_boost": 2
+  },
+  {
+    "name": "Crobar",
+    "aliases": ["crobar"],
+    "priority": "high",
+    "score_boost": 2
+  },
+  {
+    "name": "Underclub",
+    "aliases": ["underclub", "under club", "under"],
+    "priority": "high",
+    "score_boost": 2
+  },
+  {
+    "name": "Punta Carrasco",
+    "aliases": ["punta carrasco"],
+    "priority": "high",
+    "score_boost": 2
+  },
+  {
+    "name": "Costa Salguero",
+    "aliases": ["costa salguero"],
+    "priority": "high",
+    "score_boost": 2
+  },
+  {
+    "name": "Parque de la Ciudad",
+    "aliases": ["parque de la ciudad"],
+    "priority": "high",
+    "score_boost": 2
+  },
+  {
+    "name": "GEBA",
+    "aliases": ["geba"],
+    "priority": "high",
+    "score_boost": 2
+  },
+  {
+    "name": "Campo Argentino de Polo",
+    "aliases": ["campo argentino de polo", "campo de polo", "polo"],
+    "priority": "critical",
+    "score_boost": 2
+  },
+  {
+    "name": "Movistar Arena",
+    "aliases": ["movistar arena"],
+    "priority": "high",
+    "score_boost": 2
+  },
+  {
+    "name": "C Art Media",
+    "aliases": ["c art media", "cart media", "c.art media"],
+    "priority": "medium",
+    "score_boost": 2
+  },
+  {
+    "name": "Deseo",
+    "aliases": ["deseo"],
+    "priority": "medium",
+    "score_boost": 2
+  },
+  {
+    "name": "Río Electronic Music",
+    "aliases": ["rio electronic music", "rio electronica", "rio"],
+    "priority": "medium",
+    "score_boost": 2
+  },
+  {
+    "name": "PM Open Air",
+    "aliases": ["pm open air", "pm"],
+    "priority": "medium",
+    "score_boost": 2
+  }
+]

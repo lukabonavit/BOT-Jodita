@@ -1,0 +1,23 @@
+{
+  "weights": {
+    "link_detected": 8,
+    "sales_keyword": 5,
+    "time_detected": 3,
+    "important_artist": 3,
+    "important_venue": 2,
+    "hype_urgency": 4,
+    "priority_group": 3,
+    "tier_or_lote": 5,
+    "sale_today": 8,
+    "in_minutes": 8,
+    "purchase_link": 10,
+    "critical_deep_link": 14
+  },
+  "thresholds": {
+    "ignore_below": 6,
+    "log_min": 6,
+    "medium_min": 11,
+    "high_min": 16,
+    "critical_min": 23
+  }
+}

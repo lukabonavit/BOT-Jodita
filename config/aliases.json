@@ -1,0 +1,29 @@
+{
+  "slang": {
+    "fechon": ["fecha grande", "show importante"],
+    "bombazo": ["anuncio importante", "show importante"],
+    "datazo": ["informacion importante"],
+    "loquitos": ["grupo", "gente"],
+    "manija": ["hype", "ansiedad"],
+    "rrpp": ["relaciones publicas", "promotor"],
+    "habilitaron": ["activaron venta"],
+    "salio": ["salio venta", "publicaron"],
+    "vuelen": ["actuar rapido"],
+    "corran": ["actuar rapido"]
+  },
+  "common_typos": {
+    "mandarineeee": "mandarine",
+    "bombooo": "bombo",
+    "prevetna": "preventa",
+    "entrads": "entradas",
+    "habilitaronnnn": "habilitaron",
+    "salioooo": "salio",
+    "fechoooon": "fechon",
+    "bombazoooo": "bombazo"
+  },
+  "platform_aliases": {
+    "bombo": ["wearebombo", "bombo app", "app bombo"],
+    "telegram": ["t.me", "telegram.me"],
+    "instagram": ["instagram.com", "ig"]
+  }
+}

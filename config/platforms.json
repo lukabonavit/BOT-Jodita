@@ -1,0 +1,46 @@
+{
+  "purchase_domains": [
+    "wearebombo.app.link",
+    "bombo.com.ar",
+    "ticketek.com.ar",
+    "allaccess.com.ar",
+    "passline.com",
+    "tuentrada.com"
+  ],
+  "critical_deep_link_prefixes": [
+    "https://wearebombo.app.link/",
+    "http://wearebombo.app.link/",
+    "wearebombo://",
+    "bombo://"
+  ],
+  "shorteners": [
+    "bit.ly",
+    "tinyurl.com",
+    "t.co",
+    "ow.ly",
+    "buff.ly",
+    "shorturl.at",
+    "linktr.ee",
+    "lnk.bio"
+  ],
+  "social_domains": [
+    "instagram.com",
+    "www.instagram.com",
+    "t.me",
+    "telegram.me",
+    "wa.me",
+    "chat.whatsapp.com"
+  ],
+  "purchase_path_hints": [
+    "ticket",
+    "tickets",
+    "entrada",
+    "entradas",
+    "checkout",
+    "purchase",
+    "buy",
+    "comprar",
+    "evento",
+    "event"
+  ]
+}

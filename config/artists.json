@@ -1,0 +1,1214 @@
+[
+  {
+    "name": "Solomun",
+    "aliases": ["solo mun"],
+    "typo_aliases": [],
+    "genre": ["melodic house", "house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Diynamic"],
+    "likely_venues": ["Mandarine Park", "Mandarine Tent", "BOMBO"]
+  },
+  {
+    "name": "Kevin de Vries",
+    "aliases": ["kevin devries", "kdv"],
+    "typo_aliases": ["kevin de vries"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent", "BOMBO"]
+  },
+  {
+    "name": "Miss Monique",
+    "aliases": ["mona", "miss monique"],
+    "typo_aliases": ["miss monik"],
+    "genre": ["progressive house", "melodic techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Siona"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Chris Stussy",
+    "aliases": ["stussy"],
+    "typo_aliases": ["chris stussie"],
+    "genre": ["house", "minimal"],
+    "priority": "high",
+    "popularity_score": 9,
+    "related_labels": ["Up The Stuss"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Hot Since 82",
+    "aliases": ["hs82", "hot since"],
+    "typo_aliases": [],
+    "genre": ["house", "tech house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Knee Deep In Sound"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Bart Skils",
+    "aliases": ["bart skills", "bart skils"],
+    "typo_aliases": ["bart skill"],
+    "genre": ["techno", "drumcode"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Drumcode"],
+    "likely_venues": ["Mandarine", "Crobar", "Underclub"]
+  },
+  {
+    "name": "Konstantin Sibold",
+    "aliases": ["sibold"],
+    "typo_aliases": ["constantin sibold"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "ARTBAT",
+    "aliases": ["art bat"],
+    "typo_aliases": ["artbat"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Upperground"],
+    "likely_venues": ["Mandarine", "Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Adriatique",
+    "aliases": ["adriatic"],
+    "typo_aliases": ["adriatique"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["X"],
+    "likely_venues": ["Mandarine", "Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Argy",
+    "aliases": [],
+    "typo_aliases": ["argi"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Massano",
+    "aliases": [],
+    "typo_aliases": ["masano"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Cassian",
+    "aliases": [],
+    "typo_aliases": ["casian"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Afterlife", "Rose Avenue"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "CamelPhat",
+    "aliases": ["camel phat"],
+    "typo_aliases": ["camelfat"],
+    "genre": ["melodic house", "tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Mind Against",
+    "aliases": ["mindagainst"],
+    "typo_aliases": ["mind agains"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Afterlife", "Habitat"],
+    "likely_venues": ["Mandarine", "Mandarine Tent", "BOMBO"]
+  },
+  {
+    "name": "Mathame",
+    "aliases": [],
+    "typo_aliases": ["matame"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Agents Of Time",
+    "aliases": ["agents of time"],
+    "typo_aliases": ["agent of time"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Innellea",
+    "aliases": [],
+    "typo_aliases": ["inellea"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Colyn",
+    "aliases": [],
+    "typo_aliases": ["colin"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Rebuke",
+    "aliases": [],
+    "typo_aliases": ["rebuk"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Underclub"]
+  },
+  {
+    "name": "Vintage Culture",
+    "aliases": ["vintage"],
+    "typo_aliases": ["vintage cultur"],
+    "genre": ["house", "melodic house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": [],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo", "BOMBO"]
+  },
+  {
+    "name": "Mochakk",
+    "aliases": [],
+    "typo_aliases": ["mochak"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Mau P",
+    "aliases": ["maup"],
+    "typo_aliases": ["maw p"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Adam Ten",
+    "aliases": ["adam10"],
+    "typo_aliases": ["adan ten"],
+    "genre": ["organic house", "melodic house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Maccabi House"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Mita Gami",
+    "aliases": ["mitagami"],
+    "typo_aliases": ["mita gamy"],
+    "genre": ["organic house", "melodic house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Maccabi House"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "WhoMadeWho",
+    "aliases": ["who made who"],
+    "typo_aliases": ["whomadewho"],
+    "genre": ["live electronic", "indie dance"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "C Art Media"]
+  },
+  {
+    "name": "Black Coffee",
+    "aliases": ["blackcoffee"],
+    "typo_aliases": ["black coffe"],
+    "genre": ["afro house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": [],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "John Summit",
+    "aliases": ["summit"],
+    "typo_aliases": ["jon summit"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Experts Only"],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo"]
+  },
+  {
+    "name": "Fisher",
+    "aliases": [],
+    "typo_aliases": ["fischer"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": [],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo"]
+  },
+  {
+    "name": "Anyma",
+    "aliases": [],
+    "typo_aliases": ["anima"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Dom Dolla",
+    "aliases": ["domdolla"],
+    "typo_aliases": ["don dolla"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": [],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo"]
+  },
+  {
+    "name": "Boris Brejcha",
+    "aliases": ["boris"],
+    "typo_aliases": ["boris brecha"],
+    "genre": ["high-tech minimal"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Fckng Serious"],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Korolova",
+    "aliases": [],
+    "typo_aliases": ["koroloba"],
+    "genre": ["melodic techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "8Kays",
+    "aliases": ["8 kays"],
+    "typo_aliases": ["eight kays"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Eden Shalev",
+    "aliases": ["edenshalev"],
+    "typo_aliases": ["eden shale"],
+    "genre": ["house", "afro house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Deseo"]
+  },
+  {
+    "name": "Gordo",
+    "aliases": [],
+    "typo_aliases": [],
+    "genre": ["house"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": [],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Dixon",
+    "aliases": [],
+    "typo_aliases": [],
+    "genre": ["house", "indie dance"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Innervisions"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Âme",
+    "aliases": ["ame"],
+    "typo_aliases": [],
+    "genre": ["house", "indie dance"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Innervisions"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Jimi Jules",
+    "aliases": [],
+    "typo_aliases": ["jimmy jules"],
+    "genre": ["house", "indie dance"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Innervisions"],
+    "likely_venues": ["Mandarine", "Deseo"]
+  },
+  {
+    "name": "Rüfüs Du Sol",
+    "aliases": ["rufus du sol", "rufus"],
+    "typo_aliases": ["rüfus du sol"],
+    "genre": ["live electronic"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Rose Avenue"],
+    "likely_venues": ["Campo Argentino de Polo", "Movistar Arena"]
+  },
+  {
+    "name": "Peggy Gou",
+    "aliases": ["peggy"],
+    "typo_aliases": ["pegi gou"],
+    "genre": ["house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Gudu"],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo"]
+  },
+  {
+    "name": "Charlotte de Witte",
+    "aliases": ["cdw", "charlotte"],
+    "typo_aliases": ["charlot de witte"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["KNTXT"],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Amelie Lens",
+    "aliases": ["amelie"],
+    "typo_aliases": ["amelie lense"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Exhale"],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Indira Paganotto",
+    "aliases": ["indira"],
+    "typo_aliases": ["indira paganoto"],
+    "genre": ["psy techno", "techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["ARTCORE"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Enrico Sangiuliano",
+    "aliases": ["enrico"],
+    "typo_aliases": ["enrico sangiuliano"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["NINETOZERO"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Stephan Bodzin",
+    "aliases": ["bodzin"],
+    "typo_aliases": ["stephen bodzin"],
+    "genre": ["melodic techno", "live"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "C Art Media"]
+  },
+  {
+    "name": "Kölsch",
+    "aliases": ["kolsch"],
+    "typo_aliases": ["koelsch"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Kompakt"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Sven Väth",
+    "aliases": ["sven vath", "sven"],
+    "typo_aliases": ["svem vath"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Cocoon"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Hernán Cattáneo",
+    "aliases": ["hernan cattaneo", "hc"],
+    "typo_aliases": ["hernan cataneo"],
+    "genre": ["progressive house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Sudbeat"],
+    "likely_venues": ["Mandarine Park", "BOMBO", "Forja"]
+  },
+  {
+    "name": "Nick Warren",
+    "aliases": [],
+    "typo_aliases": [],
+    "genre": ["progressive house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["The Soundgarden"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Guy J",
+    "aliases": ["guyj"],
+    "typo_aliases": ["guy jay"],
+    "genre": ["progressive house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Lost & Found"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Guy Gerber",
+    "aliases": [],
+    "typo_aliases": ["guy gerver"],
+    "genre": ["house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Rumors"],
+    "likely_venues": ["Mandarine", "Deseo"]
+  },
+  {
+    "name": "ANOTR",
+    "aliases": ["anotr"],
+    "typo_aliases": ["another"],
+    "genre": ["house"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["No Art"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Michael Bibi",
+    "aliases": ["bibi"],
+    "typo_aliases": ["michael bby"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Solid Grooves"],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Pawsa",
+    "aliases": ["pawsa"],
+    "typo_aliases": ["pausa"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Solid Grooves"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "The Martinez Brothers",
+    "aliases": ["martinez brothers", "tmb"],
+    "typo_aliases": ["the martinez bros"],
+    "genre": ["house", "tech house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Cuttin Headz"],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Jamie Jones",
+    "aliases": [],
+    "typo_aliases": ["jaime jones"],
+    "genre": ["house", "tech house"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Hot Creations", "Paradise"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Marco Carola",
+    "aliases": ["carola"],
+    "typo_aliases": ["marco corola"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Music On"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Loco Dice",
+    "aliases": [],
+    "typo_aliases": ["loco daice"],
+    "genre": ["tech house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Desolat"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Seth Troxler",
+    "aliases": [],
+    "typo_aliases": ["seth troxler"],
+    "genre": ["house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Bedouin",
+    "aliases": [],
+    "typo_aliases": ["beduin"],
+    "genre": ["organic house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Saga"],
+    "likely_venues": ["Mandarine", "Deseo"]
+  },
+  {
+    "name": "Blond:ish",
+    "aliases": ["blondish", "blond ish"],
+    "typo_aliases": ["blond:ish"],
+    "genre": ["house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["ABRACADABRA"],
+    "likely_venues": ["Mandarine", "Deseo"]
+  },
+  {
+    "name": "Keinemusik",
+    "aliases": ["keine musik", "keine"],
+    "typo_aliases": ["keinmusik"],
+    "genre": ["afro house", "house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Keinemusik"],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo", "BOMBO"]
+  },
+  {
+    "name": "Rampa",
+    "aliases": [],
+    "typo_aliases": ["rampa"],
+    "genre": ["afro house", "house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Keinemusik"],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo"]
+  },
+  {
+    "name": "&ME",
+    "aliases": ["and me", "ame keinemusik"],
+    "typo_aliases": ["&me"],
+    "genre": ["afro house", "house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Keinemusik"],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo"]
+  },
+  {
+    "name": "Adam Port",
+    "aliases": [],
+    "typo_aliases": ["adam pork"],
+    "genre": ["afro house", "house"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["Keinemusik"],
+    "likely_venues": ["Mandarine Park", "Campo Argentino de Polo"]
+  },
+  {
+    "name": "Ben Böhmer",
+    "aliases": ["ben bohmer"],
+    "typo_aliases": ["ben bohemer"],
+    "genre": ["melodic house", "live"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Anjunadeep"],
+    "likely_venues": ["C Art Media", "Mandarine"]
+  },
+  {
+    "name": "Jan Blomqvist",
+    "aliases": [],
+    "typo_aliases": ["jan blomquist"],
+    "genre": ["live electronic"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["C Art Media", "Mandarine"]
+  },
+  {
+    "name": "Monolink",
+    "aliases": [],
+    "typo_aliases": ["mono link"],
+    "genre": ["live electronic"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["C Art Media", "Mandarine"]
+  },
+  {
+    "name": "Ann Clue",
+    "aliases": [],
+    "typo_aliases": ["an clue"],
+    "genre": ["techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Fckng Serious"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Moritz Hofbauer",
+    "aliases": [],
+    "typo_aliases": ["moritz hofbaur"],
+    "genre": ["melodic techno", "live"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Township Rebellion",
+    "aliases": ["township"],
+    "typo_aliases": ["town ship rebellion"],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Fideles",
+    "aliases": [],
+    "typo_aliases": ["fidelis"],
+    "genre": ["melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "KAS:ST",
+    "aliases": ["kasst", "kas st"],
+    "typo_aliases": ["kast"],
+    "genre": ["techno", "melodic techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Underclub"]
+  },
+  {
+    "name": "Space Motion",
+    "aliases": [],
+    "typo_aliases": ["space motions"],
+    "genre": ["progressive house", "melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Øostil",
+    "aliases": ["oostil"],
+    "typo_aliases": ["ostil"],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Coeus",
+    "aliases": [],
+    "typo_aliases": ["coeus"],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Marino Canal",
+    "aliases": [],
+    "typo_aliases": ["marino kanal"],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "19:26",
+    "aliases": ["1926", "19 26"],
+    "typo_aliases": [],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Arodes",
+    "aliases": [],
+    "typo_aliases": ["arodes"],
+    "genre": ["afro house", "melodic house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Goom Gum",
+    "aliases": ["goomgum"],
+    "typo_aliases": ["gum gum"],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Alfa Romero",
+    "aliases": [],
+    "typo_aliases": ["alpha romero"],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Afterlife"],
+    "likely_venues": ["Mandarine", "Mandarine Tent"]
+  },
+  {
+    "name": "Hollt",
+    "aliases": [],
+    "typo_aliases": ["holt"],
+    "genre": ["melodic techno"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Khen",
+    "aliases": [],
+    "typo_aliases": ["ken"],
+    "genre": ["progressive house"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Lost & Found"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Roy Rosenfeld",
+    "aliases": [],
+    "typo_aliases": ["roy rosenfield"],
+    "genre": ["progressive house", "organic house"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Lost & Found"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Sébastien Léger",
+    "aliases": ["sebastien leger", "seb leger"],
+    "typo_aliases": ["sebastian leger"],
+    "genre": ["organic house", "progressive house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Lost Miracle"],
+    "likely_venues": ["Mandarine", "Deseo"]
+  },
+  {
+    "name": "Lee Burridge",
+    "aliases": [],
+    "typo_aliases": ["lee buridge"],
+    "genre": ["organic house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["All Day I Dream"],
+    "likely_venues": ["Mandarine", "Deseo"]
+  },
+  {
+    "name": "Yotto",
+    "aliases": [],
+    "typo_aliases": ["yoto"],
+    "genre": ["progressive house", "melodic house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Odd One Out", "Anjunadeep"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Franky Wah",
+    "aliases": [],
+    "typo_aliases": ["franky war"],
+    "genre": ["progressive house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["SHEN"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Eelke Kleijn",
+    "aliases": ["eelke klein"],
+    "typo_aliases": ["elke kleijn"],
+    "genre": ["progressive house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Days Like Nights"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Jeremy Olander",
+    "aliases": [],
+    "typo_aliases": ["jeremy olandar"],
+    "genre": ["progressive house"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Vivrant"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Cristoph",
+    "aliases": [],
+    "typo_aliases": ["christoph"],
+    "genre": ["progressive house"],
+    "priority": "medium",
+    "popularity_score": 7,
+    "related_labels": ["Pryda"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Sasha",
+    "aliases": [],
+    "typo_aliases": [],
+    "genre": ["progressive house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "John Digweed",
+    "aliases": ["digweed"],
+    "typo_aliases": ["john digwid"],
+    "genre": ["progressive house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Bedrock"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Dennis Cruz",
+    "aliases": [],
+    "typo_aliases": ["denis cruz"],
+    "genre": ["tech house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Solid Grooves"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Cloonee",
+    "aliases": [],
+    "typo_aliases": ["clooney"],
+    "genre": ["tech house"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Hellbent"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Joseph Capriati",
+    "aliases": ["capriati"],
+    "typo_aliases": ["joseph capriatti"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Carl Cox",
+    "aliases": [],
+    "typo_aliases": ["carl cox"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": [],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Adam Beyer",
+    "aliases": [],
+    "typo_aliases": ["adam buyer"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Drumcode"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Joris Voorn",
+    "aliases": [],
+    "typo_aliases": ["joris vorn"],
+    "genre": ["techno", "house"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Spectrum"],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Layton Giordani",
+    "aliases": ["layton"],
+    "typo_aliases": ["layton giordanni"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Drumcode"],
+    "likely_venues": ["Mandarine", "Underclub"]
+  },
+  {
+    "name": "HI-LO",
+    "aliases": ["hilo", "hi lo"],
+    "typo_aliases": ["hi-lo"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["HILOMATIK"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Oliver Heldens",
+    "aliases": [],
+    "typo_aliases": ["oliver helden"],
+    "genre": ["house", "future house"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Heldeep"],
+    "likely_venues": ["Mandarine Park", "BOMBO"]
+  },
+  {
+    "name": "Space 92",
+    "aliases": ["space92"],
+    "typo_aliases": ["space ninety two"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["Filth On Acid"],
+    "likely_venues": ["Mandarine", "Underclub"]
+  },
+  {
+    "name": "Reinier Zonneveld",
+    "aliases": ["reinier"],
+    "typo_aliases": ["renier zonneveld"],
+    "genre": ["techno", "live"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Filth On Acid"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Lilly Palmer",
+    "aliases": [],
+    "typo_aliases": ["lily palmer"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Underclub"]
+  },
+  {
+    "name": "Deborah de Luca",
+    "aliases": ["deborah"],
+    "typo_aliases": ["debora de luca"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "I Hate Models",
+    "aliases": ["ihatemodels", "ihm"],
+    "typo_aliases": ["i hate model"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Underclub"]
+  },
+  {
+    "name": "999999999",
+    "aliases": ["999999999 live", "nine times nine"],
+    "typo_aliases": ["99999999"],
+    "genre": ["acid techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "Klangkuenstler",
+    "aliases": ["klangkuenstler", "klangkünstler"],
+    "typo_aliases": ["klang kunstler"],
+    "genre": ["hard techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Underclub"]
+  },
+  {
+    "name": "Nico Moreno",
+    "aliases": [],
+    "typo_aliases": ["nico moreno"],
+    "genre": ["hard techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "Alignment",
+    "aliases": [],
+    "typo_aliases": ["aligment"],
+    "genre": ["hard techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": ["KNTXT"],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "Sara Landry",
+    "aliases": [],
+    "typo_aliases": ["sarah landry"],
+    "genre": ["hard techno"],
+    "priority": "critical",
+    "popularity_score": 10,
+    "related_labels": ["HEKATE"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Trym",
+    "aliases": [],
+    "typo_aliases": ["trim"],
+    "genre": ["hard techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "Patrick Mason",
+    "aliases": [],
+    "typo_aliases": ["patrik mason"],
+    "genre": ["hard techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "Dax J",
+    "aliases": ["daxj"],
+    "typo_aliases": ["dax jay"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "FJAAK",
+    "aliases": ["fjaak"],
+    "typo_aliases": ["fjak"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Crobar"]
+  },
+  {
+    "name": "Kobosil",
+    "aliases": [],
+    "typo_aliases": ["kobosil"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "Paula Temple",
+    "aliases": [],
+    "typo_aliases": ["paula temple"],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Underclub", "Mandarine"]
+  },
+  {
+    "name": "Nina Kraviz",
+    "aliases": [],
+    "typo_aliases": ["nina kravitz"],
+    "genre": ["techno"],
+    "priority": "critical",
+    "popularity_score": 9,
+    "related_labels": ["Trip"],
+    "likely_venues": ["Mandarine", "Mandarine Park"]
+  },
+  {
+    "name": "Pan-Pot",
+    "aliases": ["pan pot", "panpot"],
+    "typo_aliases": [],
+    "genre": ["techno"],
+    "priority": "high",
+    "popularity_score": 8,
+    "related_labels": [],
+    "likely_venues": ["Mandarine", "Crobar"]
+  },
+  {
+    "name": "Tale Of Us",
+    "aliases": ["tale of us", "tou"],
+    "typo_aliases": ["tale us"],
+    "genre": ["melodic techno"],
+    "priority": "context",
+    "popularity_score": 7,
+    "related_labels": ["Afterlife", "Anyma", "MRAK"],
+    "likely_venues": ["Mandarine", "Mandarine Park"],
+    "is_active_primary": false,
+    "classification_notes": "No tratar como artista activo principal. Si aparece, clasificar como referencia historica o relacionada a Afterlife/Anyma/MRAK."
+  }
+]
