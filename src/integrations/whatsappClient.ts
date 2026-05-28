@@ -1,12 +1,15 @@
 import qrcode from "qrcode-terminal";
-import { Client, LocalAuth, type Message } from "whatsapp-web.js";
+import whatsappWeb from "whatsapp-web.js";
+import type { Client as WhatsAppWebClient, Message } from "whatsapp-web.js";
 import type { RuntimeEnv } from "../core/types.js";
 import { MessageProcessor } from "../core/messageProcessor.js";
 import { GroupRegistry } from "../storage/groupRegistry.js";
 import { Logger } from "../utils/logger.js";
 
+const { Client, LocalAuth } = whatsappWeb;
+
 export class WhatsAppClient {
-  private readonly client: Client;
+  private readonly client: WhatsAppWebClient;
 
   constructor(
     private readonly env: RuntimeEnv,

@@ -1,121 +1,327 @@
 # BOT Jodita
 
-BOT Jodita es un asistente local en Node.js/TypeScript para detectar preventas, anuncios, hints y links de compra de eventos de musica electronica en Argentina y LATAM.
+BOT Jodita es un asistente local para detectar preventas, anuncios, horarios y links de compra de eventos de musica electronica en Argentina y LATAM.
 
-El objetivo critico es operativo: si aparece un link accionable, especialmente un deep link de BOMBO como `https://wearebombo.app.link/`, se manda primero a Telegram sin esperar IA ni cooldown.
+La idea principal es simple:
 
-## Stack
+1. Tu computadora lee tus grupos de WhatsApp Web.
+2. BOT Jodita analiza mensajes con reglas locales y, si queres, OpenAI.
+3. Si detecta algo importante, manda una alerta a Telegram.
 
-- Node.js 20+
-- TypeScript
-- whatsapp-web.js
-- Telegram Bot API
-- OpenAI API
-- Playwright, preparado para Instagram publico y screenshots futuros
-- dotenv
-- JSONL local, con interfaz lista para migrar a SQLite
-- arquitectura modular
-- Dockerfile base para futuro
+Importante: BOT Jodita corre en tu computadora. Si tu PC esta apagada o el programa esta cerrado, el bot no lee WhatsApp ni manda alertas.
 
-## Instalacion
+## Antes de empezar
 
-Si es tu primera vez, empezá por [START_HERE.md](./START_HERE.md).
+Necesitas:
 
-```bash
-npm install
-cp .env.example .env
-npm run dev
+- Visual Studio Code abierto en esta carpeta.
+- Node.js instalado.
+- Una cuenta de Telegram.
+- Un bot creado con BotFather.
+- WhatsApp en tu celular para escanear el QR.
+
+Nunca subas tu archivo `.env` a GitHub. Ahi van tokens y claves privadas.
+
+## Seguridad importante
+
+Si pegaste tu token de Telegram en algun chat, documento o lugar publico, lo mas seguro es regenerarlo.
+
+En Telegram:
+
+1. Abrir `@BotFather`.
+2. Entrar a `/mybots`.
+3. Elegir tu bot.
+4. Ir a `API Token`.
+5. Usar `Revoke current token`.
+6. Copiar el token nuevo al archivo `.env`.
+
+## Paso 1: abrir la terminal
+
+En Visual Studio Code:
+
+1. Abrir la carpeta `BOT Jodita`.
+2. Ir a `Terminal`.
+3. Elegir `New Terminal`.
+
+La terminal deberia quedar en:
+
+```text
+C:\Users\Luka\Documents\BOT Jodita
 ```
 
-En Windows PowerShell:
+## Paso 2: crear el archivo `.env`
+
+En la terminal:
 
 ```powershell
-npm install
 Copy-Item .env.example .env
-npm run dev
 ```
 
-## Configuracion `.env`
+Despues abri `.env` desde Visual Studio Code.
 
-Completar:
+## Paso 3: poner el token de Telegram
+
+En `.env`, completar solo esto primero:
 
 ```env
-TELEGRAM_BOT_TOKEN=
+TELEGRAM_BOT_TOKEN=TU_TOKEN_DE_BOTFATHER
 TELEGRAM_CHAT_ID=
-OPENAI_API_KEY=
+TELEGRAM_POLLING_ENABLED=true
+WHATSAPP_ENABLED=false
+OPENAI_ENABLED=false
+```
+
+Por ahora dejamos `WHATSAPP_ENABLED=false` para probar Telegram sin mezclarlo con WhatsApp.
+
+Muy importante: `TELEGRAM_CHAT_ID` no es el numero que aparece al principio del token del bot. El chat id es el numero del chat donde queres recibir alertas.
+
+Ejemplo incorrecto:
+
+```env
+TELEGRAM_CHAT_ID=8023918722
+```
+
+Ese numero suele ser el ID del bot, no tu chat privado ni tu grupo.
+
+## Paso 4: instalar dependencias
+
+En la terminal:
+
+```powershell
+.\setup-bot-jodita.ps1
+```
+
+Si Windows dice que no permite ejecutar scripts, correr una vez:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Y despues repetir:
+
+```powershell
+.\setup-bot-jodita.ps1
+```
+
+## Paso 5: iniciar el bot solo para probar Telegram
+
+En la terminal:
+
+```powershell
+.\start-bot-jodita.ps1
+```
+
+Si todo esta bien, deberias ver algo parecido a:
+
+```text
+BOT Jodita started
+Telegram bot ready
+WhatsApp disabled by WHATSAPP_ENABLED=false
+```
+
+Ahora abri Telegram, entra al chat privado con tu bot y toca `Start` o mandale:
+
+```text
+/start
+```
+
+Despues mandale:
+
+```text
+/status
+```
+
+O:
+
+```text
+/chatid
+```
+
+El bot deberia responder algo como:
+
+```text
+Este chat_id: 123456789
+```
+
+Ese numero es el que tenes que copiar.
+
+## Paso 6: completar `TELEGRAM_CHAT_ID`
+
+Apaga el bot con:
+
+```text
+Ctrl + C
+```
+
+En `.env`, completar:
+
+```env
+TELEGRAM_CHAT_ID=123456789
+```
+
+Guardar el archivo.
+
+Volver a iniciar:
+
+```powershell
+.\start-bot-jodita.ps1
+```
+
+Mandar otra vez:
+
+```text
+/status
+```
+
+Si responde, Telegram ya esta funcionando.
+
+## Usar un grupo de Telegram
+
+Tambien podes recibir alertas en un grupo de Telegram con amigos.
+
+Tus amigos no necesitan instalar nada. Vos sos el unico que ejecuta BOT Jodita.
+
+Pasos:
+
+1. Crear un grupo de Telegram.
+2. Agregar tu bot al grupo.
+3. Si no puede responder, hacerlo admin del grupo.
+4. Mandar en el grupo:
+
+```text
+/chatid
+```
+
+El bot va a responder un numero parecido a:
+
+```text
+-1001234567890
+```
+
+Ese numero negativo es el `TELEGRAM_CHAT_ID` del grupo.
+
+En `.env`:
+
+```env
+TELEGRAM_CHAT_ID=-1001234567890
+```
+
+Apagar y volver a iniciar el bot.
+
+## Paso 7: activar WhatsApp
+
+Cuando Telegram ya responde, recien ahi activar WhatsApp.
+
+En `.env`:
+
+```env
 WHATSAPP_ENABLED=true
 WHATSAPP_HEADLESS=false
-OPENAI_ENABLED=true
-PUPPETEER_EXECUTABLE_PATH=
 ```
 
-Si `OPENAI_API_KEY` falta, el bot sigue funcionando con analisis local por scoring, entidades, links y horarios.
+Iniciar:
 
-## Telegram
-
-1. Abrir Telegram y hablar con `@BotFather`.
-2. Crear bot con `/newbot`.
-3. Copiar el token en `TELEGRAM_BOT_TOKEN`.
-4. Obtener `TELEGRAM_CHAT_ID`:
-   - Mandale un mensaje al bot.
-   - Usar temporalmente algun bot/helper de chat id, o consultar updates de Telegram.
-   - Pegar el chat id en `.env`.
-
-Comandos incluidos:
-
-- `/status`
-- `/last`
-- `/keywords`
-- `/addartist Nombre Del Artista`
-- `/addkeyword sales|hype|urgency palabra o frase`
-- `/mute Nombre Grupo`
-- `/unmute Nombre Grupo`
-- `/threshold critical_min 23`
-- `/watchgroups`
-- `/watchgroups list`
-- `/watchgroups add Nombre Grupo`
-- `/watchgroups remove Nombre Grupo`
-- `/watchgroups all on`
-- `/watchgroups all off`
-- `/whatsappgroups`
-- `/memory`
-
-## WhatsApp Web
-
-Al ejecutar `npm run dev`, el bot muestra un QR en terminal. Escanearlo desde WhatsApp:
-
-`WhatsApp > Dispositivos vinculados > Vincular dispositivo`
-
-La sesion se guarda localmente en `.wwebjs_auth/`.
-
-Por defecto se monitorean grupos si `config/groups.json` no define grupos prioritarios. Para restringir:
-
-```json
-{
-  "watch_all_groups": false,
-  "priority_groups": ["Nombre exacto o parcial del grupo"],
-  "muted_groups": [],
-  "group_aliases": {}
-}
+```powershell
+.\start-bot-jodita.ps1
 ```
 
-## Config editable
+La primera vez va a aparecer un QR.
 
-Los datos viven en `config/`:
+En tu celular:
 
-- `artists.json`
-- `venues.json`
-- `keywords_sales.json`
-- `keywords_hype.json`
-- `keywords_urgency.json`
-- `aliases.json`
-- `platforms.json`
-- `scoring.json`
-- `groups.json`
+```text
+WhatsApp > Dispositivos vinculados > Vincular dispositivo
+```
 
-No hace falta tocar el codigo para agregar artistas, aliases, venues, palabras de venta o dominios.
+Escanear el QR.
 
-El prefijo critico de BOMBO queda en `config/platforms.json`:
+La sesion queda guardada en `.wwebjs_auth/`, asi que no deberias escanear el QR cada vez.
+
+## Si WhatsApp no abre navegador
+
+Agregar en `.env` la ruta de Chrome:
+
+```env
+PUPPETEER_EXECUTABLE_PATH=C:\Program Files\Google\Chrome\Application\chrome.exe
+```
+
+Si tu Chrome esta en otra carpeta, usar esa ruta.
+
+## Paso 8: elegir grupos de WhatsApp
+
+Por defecto, BOT Jodita evalua todos los grupos de WhatsApp que ve tu cuenta, salvo los muteados.
+
+Cuando WhatsApp diga `ready`, en Telegram podes mandar:
+
+```text
+/whatsappgroups
+```
+
+Eso lista los grupos que detecto.
+
+Para monitorear solo algunos:
+
+```text
+/watchgroups add Mandarine
+/watchgroups add Bombo
+```
+
+El nombre puede ser exacto o parcial. Si agregas `Mandarine`, toma grupos cuyo nombre contenga `Mandarine`.
+
+Para quitar uno:
+
+```text
+/watchgroups remove Mandarine
+```
+
+Para mutear un grupo:
+
+```text
+/mute Nombre del grupo
+```
+
+Para desmutear:
+
+```text
+/unmute Nombre del grupo
+```
+
+Para ver la configuracion:
+
+```text
+/watchgroups
+```
+
+Archivo manual:
+
+```text
+config/groups.json
+```
+
+Reglas:
+
+- `watch_all_groups: true`: evalua todos los grupos, excepto muteados.
+- `watch_all_groups: false` y `priority_groups: []`: evalua todos los grupos, excepto muteados.
+- `watch_all_groups: false` y `priority_groups` con nombres: evalua solo esos grupos.
+- `muted_groups`: nunca evalua esos grupos.
+
+## Paso 9: probar una alerta
+
+Cuando Telegram y WhatsApp esten funcionando, si aparece en un grupo algo como:
+
+```text
+salio link bombo https://wearebombo.app.link/eq3A2ynou3b entren ya
+```
+
+BOT Jodita deberia mandar alerta critica.
+
+El prefijo critico de BOMBO esta configurado en:
+
+```text
+config/platforms.json
+```
+
+Con:
 
 ```json
 "critical_deep_link_prefixes": [
@@ -126,81 +332,130 @@ El prefijo critico de BOMBO queda en `config/platforms.json`:
 ]
 ```
 
-Importante: BOMBO vende principalmente desde aplicacion movil. Este proyecto no asume que exista una web publica scrapeable estable; prioriza links copiados desde WhatsApp, RRPPs, universal links y deep links.
+## OpenAI
 
-## Scoring
+Para usar analisis con IA, completar:
 
-Pesos iniciales en `config/scoring.json`:
+```env
+OPENAI_API_KEY=TU_API_KEY
+OPENAI_ENABLED=true
+```
 
-- link detectado: +8
-- palabra de venta: +5
-- horario detectado: +3
-- artista importante: +3
-- venue importante: +2
-- hype/urgencia: +4
-- grupo prioritario: +3
-- lote/tier/early bird: +5
-- sale hoy: +8
-- en minutos: +8
-- purchase link: +10
-- deep link critico: +14
+Si no tenes API key, dejar:
 
-Niveles:
+```env
+OPENAI_ENABLED=false
+```
 
-- `< 6`: ignorar
-- `6-10`: guardar log
-- `11-15`: alerta media
-- `16-22`: alerta alta
-- `23+`: alerta critica
+El bot igual funciona con reglas locales: links, horarios, artistas, venues, hype y scoring.
 
-## Deteccion
+## Comandos de Telegram
 
-El pipeline hace:
+- `/status`: estado general del bot.
+- `/chatid`: muestra el chat id actual.
+- `/last`: ultimos eventos guardados.
+- `/keywords`: resumen de keywords.
+- `/addartist Nombre`: agrega artista.
+- `/addkeyword sales palabra`: agrega keyword de venta.
+- `/addkeyword hype palabra`: agrega keyword de hype.
+- `/addkeyword urgency palabra`: agrega keyword de urgencia.
+- `/mute Nombre Grupo`: ignora ese grupo.
+- `/unmute Nombre Grupo`: deja de ignorarlo.
+- `/threshold critical_min 23`: cambia umbral.
+- `/watchgroups`: muestra grupos configurados.
+- `/watchgroups add Nombre`: agrega grupo a monitoreo.
+- `/watchgroups remove Nombre`: quita grupo.
+- `/watchgroups all on`: evalua todos los grupos.
+- `/watchgroups all off`: vuelve a modo grupos prioritarios.
+- `/whatsappgroups`: lista grupos detectados en WhatsApp.
+- `/memory`: resumen simple de patrones vistos.
 
-1. Normalizacion: minusculas, tildes, letras repetidas, typos y slang.
-2. Extraccion de links, incluyendo URLs pegadas a emojis o puntuacion.
-3. Clasificacion de links: BOMBO/deep link, compra, shortener, social, desconocido.
-4. Deteccion de horarios: `13hs`, `13:00`, `18.30`, `hoy a las 19`, `en 30 minutos`, `mediodia`, `esta noche`.
-5. Matching de artistas y venues por aliases.
-6. Scoring configurable.
-7. Alerta rapida si hay link nuevo de compra.
-8. Analisis OpenAI en JSON.
-9. Log JSONL y aprendizaje simple de patrones.
+## Donde se configura cada cosa
+
+- Artistas: `config/artists.json`
+- Venues: `config/venues.json`
+- Palabras de venta: `config/keywords_sales.json`
+- Hype: `config/keywords_hype.json`
+- Urgencia: `config/keywords_urgency.json`
+- Links y dominios: `config/platforms.json`
+- Scoring: `config/scoring.json`
+- Grupos: `config/groups.json`
 
 ## Logs
 
-Los eventos se guardan en:
+Los eventos quedan en:
 
 ```text
 data/events.jsonl
 data/learned-patterns.json
+data/whatsapp-groups.json
 ```
 
-Cada registro incluye timestamp, grupo, mensaje original, normalizado, score, analisis IA, links, alerta y urgencia.
+Estos archivos no se suben a GitHub.
 
-## Troubleshooting
+## Apagar el bot
 
-- No aparece QR: borrar `.wwebjs_auth/` solo si queres resetear sesion.
-- WhatsApp no abre Chromium: probar `WHATSAPP_HEADLESS=false` y verificar dependencias del navegador.
-- Si instalaste sin descargar Chromium, setear `PUPPETEER_EXECUTABLE_PATH` al Chrome local, por ejemplo `C:\Program Files\Google\Chrome\Application\chrome.exe`.
-- No llegan alertas: revisar `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` y que hayas iniciado chat con el bot.
-- OpenAI falla: el bot usa fallback local y deja warning en consola.
-- Mucho ruido: subir `medium_min`, agregar grupos a `muted_groups` o ajustar keywords.
-- Faltan alertas: bajar thresholds o agregar aliases en `artists.json`, `venues.json` o keywords.
+En la terminal donde corre:
+
+```text
+Ctrl + C
+```
+
+Si pregunta, responder:
+
+```text
+Y
+```
+
+## Problemas comunes
+
+### El bot no responde en Telegram
+
+Revisar:
+
+- Que `TELEGRAM_BOT_TOKEN` este completo.
+- Que hayas tocado `Start` en el chat con el bot.
+- Que el programa siga corriendo en la terminal.
+- Que no haya errores rojos en la terminal.
+- Que `TELEGRAM_POLLING_ENABLED=true`.
+
+### Puse TELEGRAM_CHAT_ID pero no llegan alertas
+
+Recordar: `TELEGRAM_CHAT_ID` no es el ID del bot. Usar `/chatid` y copiar exactamente lo que responde.
+
+### El programa se cae antes de Telegram
+
+Probar primero:
+
+```env
+WHATSAPP_ENABLED=false
+```
+
+Cuando Telegram funcione, volver a activar WhatsApp.
+
+### No aparece el QR de WhatsApp
+
+Revisar:
+
+- `WHATSAPP_ENABLED=true`
+- `WHATSAPP_HEADLESS=false`
+- `PUPPETEER_EXECUTABLE_PATH` si Chrome no abre.
+
+### No quiero arriesgar mi numero de WhatsApp
+
+BOT Jodita solo lee grupos desde WhatsApp Web. No vamos a enviar alertas por WhatsApp. Las alertas salen por Telegram.
 
 ## Roadmap
 
 - OCR de flyers.
 - Transcripcion de audios.
 - Analisis de screenshots.
-- Scraping Instagram publico con Playwright.
-- Scraping de stories si hay una fuente autorizada.
+- Instagram publico con Playwright.
 - Embeddings y vector DB.
 - Clustering de RRPPs.
-- Clasificacion automatica de importancia.
 - Dashboard web.
 - Push notifications.
 - Mejor soporte deep links BOMBO.
 - Analisis historico de eventos.
 - Migracion opcional a SQLite.
-- Docker con volumen persistente para sesion WhatsApp.
+- Docker futuro.
