@@ -117,6 +117,20 @@ export class ConfigService {
     return true;
   }
 
+  async addPriorityGroups(groupNames: string[]): Promise<{ added: string[]; skipped: string[] }> {
+    const added: string[] = [];
+    const skipped: string[] = [];
+    for (const groupName of groupNames) {
+      const didAdd = await this.addPriorityGroup(groupName);
+      if (didAdd) {
+        added.push(groupName);
+      } else {
+        skipped.push(groupName);
+      }
+    }
+    return { added, skipped };
+  }
+
   async removePriorityGroup(groupName: string): Promise<boolean> {
     const config = this.get();
     const cleanGroup = groupName.trim();
@@ -124,6 +138,32 @@ export class ConfigService {
     config.groups.priority_groups = config.groups.priority_groups.filter((group) => group !== cleanGroup);
     await this.saveGroups();
     return config.groups.priority_groups.length !== before;
+  }
+
+  async removePriorityGroups(groupNames: string[]): Promise<{ removed: string[]; skipped: string[] }> {
+    const removed: string[] = [];
+    const skipped: string[] = [];
+    for (const groupName of groupNames) {
+      const didRemove = await this.removePriorityGroup(groupName);
+      if (didRemove) {
+        removed.push(groupName);
+      } else {
+        skipped.push(groupName);
+      }
+    }
+    return { removed, skipped };
+  }
+
+  async prunePriorityGroups(validGroupNames: string[]): Promise<string[]> {
+    const config = this.get();
+    const valid = new Set(validGroupNames);
+    const before = config.groups.priority_groups;
+    config.groups.priority_groups = before.filter((groupName) => valid.has(groupName));
+    const removed = before.filter((groupName) => !valid.has(groupName));
+    if (removed.length > 0) {
+      await this.saveGroups();
+    }
+    return removed;
   }
 
   private async saveGroups(): Promise<void> {

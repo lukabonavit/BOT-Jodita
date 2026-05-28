@@ -8,8 +8,8 @@ export function escapeRegex(value: string): string {
 
 export function foldText(value: string): string {
   return value
+    .normalize("NFKD")
     .toLowerCase()
-    .normalize("NFD")
     .replace(COMBINING_MARKS, "")
     .replace(/[\u201c\u201d]/g, '"')
     .replace(/[\u2018\u2019]/g, "'")

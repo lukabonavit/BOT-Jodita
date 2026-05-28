@@ -8,6 +8,7 @@ import type {
 } from "../core/types.js";
 import type { Notifier } from "../core/notifier.js";
 import { ConfigService } from "../config/configService.js";
+import { normalizeText } from "../core/normalizer.js";
 import { PatternMemory } from "../learning/patternMemory.js";
 import { GroupRegistry } from "../storage/groupRegistry.js";
 import { JsonlStore } from "../storage/jsonlStore.js";
@@ -35,6 +36,24 @@ function firstTime(detection: DetectionResult): string {
 
 function clampTelegram(text: string): string {
   return text.length <= MAX_TELEGRAM_LENGTH ? text : `${text.slice(0, MAX_TELEGRAM_LENGTH - 1)}…`;
+}
+
+function formatIndexedGroups(groupNames: string[]): string {
+  return groupNames.map((name, index) => `${index + 1}. ${name}`).join("\n");
+}
+
+function parseIndexSelection(value: string, max: number): number[] | null {
+  const trimmed = value.trim();
+  if (!/^\d+(?:[\s,]+\d+)*$/.test(trimmed)) return null;
+  const indexes = trimmed
+    .split(/[\s,]+/)
+    .map((item) => Number.parseInt(item, 10))
+    .filter((item) => Number.isInteger(item) && item >= 1 && item <= max);
+  return [...new Set(indexes)];
+}
+
+function normalizedForGroupSearch(value: string): string {
+  return normalizeText(value).reduced;
 }
 
 export class TelegramAlertBot implements Notifier {
@@ -304,17 +323,65 @@ export class TelegramAlertBot implements Notifier {
 
       if (action === "all" && (rest[0] === "on" || rest[0] === "off")) {
         await this.configService.setWatchAllGroups(rest[0] === "on");
-      } else if (action === "add" && groupName) {
-        const added = await this.configService.addPriorityGroup(groupName);
+      } else if (action === "addall") {
+        const groups = await this.knownWhatsAppGroupNames();
+        if (groups.length === 0) {
+          await this.bot?.sendMessage(
+            msg.chat.id,
+            "No tengo grupos detectados todavia. Usa /whatsappgroups refresh y proba de nuevo."
+          );
+          return;
+        }
+        const result = await this.configService.addPriorityGroups(groups);
         await this.bot?.sendMessage(
           msg.chat.id,
-          added ? `Grupo agregado a monitoreo: ${groupName}` : `Ese grupo ya estaba o el nombre esta vacio.`
+          `Grupos agregados: ${result.added.length}. Ya estaban: ${result.skipped.length}.`
+        );
+      } else if (action === "prune") {
+        const groups = await this.knownWhatsAppGroupNames();
+        const removed = await this.configService.prunePriorityGroups(groups);
+        await this.bot?.sendMessage(
+          msg.chat.id,
+          removed.length > 0
+            ? `Quite ${removed.length} grupos que no estan en WhatsApp:\n${removed.join("\n")}`
+            : "Todos los priority_groups existen en la lista detectada de WhatsApp."
+        );
+      } else if (action === "add" && groupName) {
+        const selected = await this.resolveKnownGroups(groupName);
+        if (selected.status === "none") {
+          await this.bot?.sendMessage(
+            msg.chat.id,
+            `No encontre ningun grupo de WhatsApp que coincida con "${groupName}". Usa /whatsappgroups refresh y despues agrega por numero.`
+          );
+          return;
+        }
+        if (selected.status === "many") {
+          await this.bot?.sendMessage(
+            msg.chat.id,
+            [
+              `Encontre varias coincidencias para "${groupName}". Agrega por numero:`,
+              formatIndexedGroups(selected.groupNames)
+            ].join("\n")
+          );
+          return;
+        }
+        const result = await this.configService.addPriorityGroups(selected.groupNames);
+        await this.bot?.sendMessage(
+          msg.chat.id,
+          `Grupos agregados: ${result.added.length}. Ya estaban: ${result.skipped.length}.\n${selected.groupNames.join("\n")}`
         );
       } else if ((action === "remove" || action === "rm") && groupName) {
-        const removed = await this.configService.removePriorityGroup(groupName);
+        const config = this.configService.get();
+        const indexes = parseIndexSelection(groupName, config.groups.priority_groups.length);
+        const groupNames = indexes
+          ? indexes.map((index) => config.groups.priority_groups[index - 1]).filter((name): name is string => Boolean(name))
+          : [groupName];
+        const result = await this.configService.removePriorityGroups(groupNames);
         await this.bot?.sendMessage(
           msg.chat.id,
-          removed ? `Grupo quitado de monitoreo: ${groupName}` : `No encontre ese grupo en priority_groups.`
+          result.removed.length > 0
+            ? `Grupos quitados: ${result.removed.length}\n${result.removed.join("\n")}`
+            : `No encontre ese grupo en priority_groups.`
         );
       } else if (action && action !== "list") {
         await this.bot?.sendMessage(
@@ -325,6 +392,9 @@ export class TelegramAlertBot implements Notifier {
             "/watchgroups list",
             "/watchgroups all on",
             "/watchgroups all off",
+            "/watchgroups addall",
+            "/watchgroups prune",
+            "/watchgroups add 1,2,3",
             "/watchgroups add Nombre del grupo",
             "/watchgroups remove Nombre del grupo"
           ].join("\n")
@@ -337,7 +407,7 @@ export class TelegramAlertBot implements Notifier {
         msg.chat.id,
         [
           `Watch all groups: ${config.groups.watch_all_groups ? "on" : "off"}`,
-          `Priority groups: ${config.groups.priority_groups.join(", ") || "-"}`,
+          `Priority groups:\n${config.groups.priority_groups.length > 0 ? formatIndexedGroups(config.groups.priority_groups) : "-"}`,
           `Muted groups: ${config.groups.muted_groups.join(", ") || "-"}`
         ].join("\n")
       );
@@ -356,7 +426,7 @@ export class TelegramAlertBot implements Notifier {
       const text =
         groups.length === 0
           ? "Todavia no tengo grupos de WhatsApp registrados. Inicia WhatsApp, espera a que diga ready y volve a probar."
-          : groups.map((group, index) => `${index + 1}. ${group.name}`).join("\n");
+          : formatIndexedGroups(groups.map((group) => group.name));
       await this.bot?.sendMessage(msg.chat.id, clampTelegram(text));
     });
 
@@ -369,5 +439,34 @@ export class TelegramAlertBot implements Notifier {
         .join("\n");
       await this.bot?.sendMessage(msg.chat.id, topGroups || "Sin memoria acumulada.");
     });
+  }
+
+  private async knownWhatsAppGroupNames(): Promise<string[]> {
+    if (this.groupRegistry.list().length === 0 && this.refreshWhatsAppGroups) {
+      await this.refreshWhatsAppGroups();
+    }
+    return this.groupRegistry.list().map((group) => group.name);
+  }
+
+  private async resolveKnownGroups(
+    query: string
+  ): Promise<{ status: "one"; groupNames: string[] } | { status: "many"; groupNames: string[] } | { status: "none"; groupNames: [] }> {
+    const groups = await this.knownWhatsAppGroupNames();
+    const indexes = parseIndexSelection(query, groups.length);
+    if (indexes) {
+      const groupNames = indexes.map((index) => groups[index - 1]).filter((name): name is string => Boolean(name));
+      return groupNames.length > 0 ? { status: "one", groupNames } : { status: "none", groupNames: [] };
+    }
+
+    const normalizedQuery = normalizedForGroupSearch(query);
+    const exact = groups.filter((group) => normalizedForGroupSearch(group) === normalizedQuery);
+    if (exact.length === 1) return { status: "one", groupNames: exact };
+    if (exact.length > 1) return { status: "many", groupNames: exact };
+
+    const partial = groups.filter((group) => normalizedForGroupSearch(group).includes(normalizedQuery));
+    if (partial.length === 1) return { status: "one", groupNames: partial };
+    if (partial.length > 1) return { status: "many", groupNames: partial };
+
+    return { status: "none", groupNames: [] };
   }
 }

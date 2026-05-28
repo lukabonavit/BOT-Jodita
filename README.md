@@ -291,12 +291,32 @@ Para monitorear solo algunos:
 /watchgroups add Bombo
 ```
 
-El nombre puede ser exacto o parcial. Si agregas `Mandarine`, toma grupos cuyo nombre contenga `Mandarine`.
+El nombre puede ser exacto o parcial, pero tiene que existir en la lista de WhatsApp detectada. Si escribis un nombre que no existe, BOT Jodita no lo agrega.
+
+Tambien podes agregar por numero usando la lista de `/whatsappgroups`:
+
+```text
+/watchgroups add 1
+/watchgroups add 1,2,3
+```
+
+Para agregar todos los grupos detectados sin escribirlos uno por uno:
+
+```text
+/watchgroups addall
+```
+
+Para limpiar `priority_groups` y quitar nombres que ya no existan en WhatsApp:
+
+```text
+/watchgroups prune
+```
 
 Para quitar uno:
 
 ```text
 /watchgroups remove Mandarine
+/watchgroups remove 1
 ```
 
 Para mutear un grupo:
@@ -389,7 +409,11 @@ El bot igual funciona con reglas locales: links, horarios, artistas, venues, hyp
 - `/threshold critical_min 23`: cambia umbral.
 - `/watchgroups`: muestra grupos configurados.
 - `/watchgroups add Nombre`: agrega grupo a monitoreo.
+- `/watchgroups add 1,2,3`: agrega grupos por numero desde `/whatsappgroups`.
+- `/watchgroups addall`: agrega todos los grupos detectados.
 - `/watchgroups remove Nombre`: quita grupo.
+- `/watchgroups remove 1`: quita grupo por numero desde `/watchgroups`.
+- `/watchgroups prune`: quita priority groups que no existan en WhatsApp.
 - `/watchgroups all on`: evalua todos los grupos.
 - `/watchgroups all off`: vuelve a modo grupos prioritarios.
 - `/whatsappgroups`: lista grupos detectados en WhatsApp.
