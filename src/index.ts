@@ -26,7 +26,17 @@ async function main(): Promise<void> {
   const groupRegistry = new GroupRegistry(env.dataDir);
   await groupRegistry.init();
 
-  const telegram = new TelegramAlertBot(env, configService, store, memory, groupRegistry, logger);
+  let refreshWhatsAppGroups: (() => Promise<number>) | null = null;
+
+  const telegram = new TelegramAlertBot(
+    env,
+    configService,
+    store,
+    memory,
+    groupRegistry,
+    () => refreshWhatsAppGroups?.() ?? Promise.resolve(0),
+    logger
+  );
   telegram.start();
 
   const notifier: Notifier = env.telegramBotToken ? telegram : new ConsoleNotifier();
@@ -44,6 +54,7 @@ async function main(): Promise<void> {
   );
 
   const whatsapp = new WhatsAppClient(env, processor, groupRegistry, logger);
+  refreshWhatsAppGroups = () => whatsapp.refreshKnownGroups();
   whatsapp.start();
 
   logger.info("BOT Jodita started", {

@@ -15,6 +15,8 @@ import { Logger } from "../utils/logger.js";
 
 const MAX_TELEGRAM_LENGTH = 3900;
 
+export type WhatsAppGroupsRefresh = () => Promise<number>;
+
 function truncate(value: string, max = 900): string {
   if (value.length <= max) return value;
   return `${value.slice(0, max - 1)}…`;
@@ -45,10 +47,19 @@ export class TelegramAlertBot implements Notifier {
     private readonly store: JsonlStore,
     private readonly memory: PatternMemory,
     private readonly groupRegistry: GroupRegistry,
+    private readonly refreshWhatsAppGroups: WhatsAppGroupsRefresh | null,
     private readonly logger: Logger
   ) {
     this.bot = env.telegramBotToken
-      ? new TelegramBot(env.telegramBotToken, { polling: env.telegramPollingEnabled })
+      ? new TelegramBot(env.telegramBotToken, {
+          polling: env.telegramPollingEnabled
+            ? {
+                interval: 1000,
+                autoStart: true,
+                params: { timeout: 20 }
+              }
+            : false
+        })
       : null;
   }
 
@@ -59,6 +70,11 @@ export class TelegramAlertBot implements Notifier {
     }
 
     this.registerCommands();
+    this.bot.on("polling_error", (error: Error) => {
+      this.logger.warn("Telegram polling error; retrying automatically", {
+        error: error.message
+      });
+    });
     this.logger.info("Telegram bot ready", { polling: this.env.telegramPollingEnabled });
   }
 
@@ -327,7 +343,15 @@ export class TelegramAlertBot implements Notifier {
       );
     });
 
-    this.bot.onText(/^\/whatsappgroups$/, async (msg) => {
+    this.bot.onText(/^\/whatsappgroups(?:\s+(refresh))?$/, async (msg, match) => {
+      const shouldRefresh = match?.[1] === "refresh";
+      if ((shouldRefresh || this.groupRegistry.list().length === 0) && this.refreshWhatsAppGroups) {
+        const count = await this.refreshWhatsAppGroups();
+        if (shouldRefresh) {
+          await this.bot?.sendMessage(msg.chat.id, `Refresh WhatsApp terminado. Grupos encontrados: ${count}`);
+        }
+      }
+
       const groups = this.groupRegistry.list();
       const text =
         groups.length === 0

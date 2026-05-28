@@ -10,6 +10,7 @@ const { Client, LocalAuth } = whatsappWeb;
 
 export class WhatsAppClient {
   private readonly client: WhatsAppWebClient;
+  private refreshingGroups = false;
 
   constructor(
     private readonly env: RuntimeEnv,
@@ -22,6 +23,7 @@ export class WhatsAppClient {
       puppeteer: {
         headless: env.whatsappHeadless,
         executablePath: env.puppeteerExecutablePath,
+        protocolTimeout: 120000,
         args: ["--no-sandbox", "--disable-setuid-sandbox"]
       }
     });
@@ -40,7 +42,7 @@ export class WhatsAppClient {
 
     this.client.on("ready", () => {
       this.logger.info("WhatsApp Web ready");
-      void this.refreshKnownGroups();
+      this.scheduleKnownGroupRefreshes();
     });
 
     this.client.on("auth_failure", (message) => {
@@ -102,7 +104,12 @@ export class WhatsAppClient {
     }
   }
 
-  private async refreshKnownGroups(): Promise<void> {
+  async refreshKnownGroups(): Promise<number> {
+    if (this.refreshingGroups) {
+      return this.groupRegistry.list().length;
+    }
+
+    this.refreshingGroups = true;
     try {
       const chats = await this.client.getChats();
       const groups = chats
@@ -112,12 +119,29 @@ export class WhatsAppClient {
           name: chat.name,
           last_seen: new Date().toISOString()
         }));
-      await this.groupRegistry.replace(groups);
+
+      if (groups.length > 0) {
+        await this.groupRegistry.replace(groups);
+      }
+
       this.logger.info("WhatsApp groups loaded", { count: groups.length });
+      return groups.length;
     } catch (error) {
       this.logger.warn("Could not list WhatsApp groups", {
         error: error instanceof Error ? error.message : String(error)
       });
+      return 0;
+    } finally {
+      this.refreshingGroups = false;
+    }
+  }
+
+  private scheduleKnownGroupRefreshes(): void {
+    const delays = [0, 5000, 20000, 60000];
+    for (const delay of delays) {
+      setTimeout(() => {
+        void this.refreshKnownGroups();
+      }, delay);
     }
   }
 }

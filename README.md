@@ -278,6 +278,12 @@ Cuando WhatsApp diga `ready`, en Telegram podes mandar:
 
 Eso lista los grupos que detecto.
 
+Si responde que todavia no tiene grupos, espera unos segundos y fuerza un refresco:
+
+```text
+/whatsappgroups refresh
+```
+
 Para monitorear solo algunos:
 
 ```text
@@ -387,6 +393,7 @@ El bot igual funciona con reglas locales: links, horarios, artistas, venues, hyp
 - `/watchgroups all on`: evalua todos los grupos.
 - `/watchgroups all off`: vuelve a modo grupos prioritarios.
 - `/whatsappgroups`: lista grupos detectados en WhatsApp.
+- `/whatsappgroups refresh`: fuerza actualizar la lista de grupos.
 - `/memory`: resumen simple de patrones vistos.
 
 ## Donde se configura cada cosa
@@ -459,6 +466,20 @@ Revisar:
 - `WHATSAPP_ENABLED=true`
 - `WHATSAPP_HEADLESS=false`
 - `PUPPETEER_EXECUTABLE_PATH` si Chrome no abre.
+
+### `/whatsappgroups` no muestra grupos
+
+WhatsApp Web a veces tarda en cargar la lista completa. Probar:
+
+```text
+/whatsappgroups refresh
+```
+
+Si en la terminal aparece `Runtime.callFunctionOn timed out`, dejalo abierto: BOT Jodita reintenta solo con un timeout mas alto. Tambien ayuda esperar 30-60 segundos despues de `WhatsApp Web ready`.
+
+### Aparece `polling_error` o `ECONNRESET`
+
+Eso suele ser un corte temporal de conexion con Telegram. BOT Jodita lo registra y vuelve a intentar automaticamente.
 
 ### No quiero arriesgar mi numero de WhatsApp
 
