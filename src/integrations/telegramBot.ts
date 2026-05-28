@@ -160,6 +160,25 @@ export class TelegramAlertBot implements Notifier {
   private registerCommands(): void {
     if (!this.bot) return;
 
+    this.bot.onText(/^\/start$/, async (msg) => {
+      await this.bot?.sendMessage(
+        msg.chat.id,
+        [
+          "BOT Jodita esta activo.",
+          "",
+          `Este chat_id es: ${msg.chat.id}`,
+          "",
+          "Si estas configurando por primera vez:",
+          "1. Copia ese numero.",
+          "2. Pegalo en TELEGRAM_CHAT_ID dentro de .env.",
+          "3. Guarda .env.",
+          "4. Reinicia BOT Jodita.",
+          "",
+          "Tambien podes usar /status o /chatid."
+        ].join("\n")
+      );
+    });
+
     this.bot.onText(/^\/status$/, async (msg) => {
       const config = this.configService.get();
       const uptimeMinutes = Math.round((Date.now() - this.startedAt.getTime()) / 60000);

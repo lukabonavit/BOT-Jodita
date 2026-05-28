@@ -22,10 +22,32 @@ if (-not (Test-Path "node_modules")) {
   exit 1
 }
 
+function Get-DotEnvValue {
+  param(
+    [string]$Text,
+    [string]$Key
+  )
+
+  $Match = [regex]::Match($Text, "(?m)^\s*$Key\s*=\s*(.*)\s*$")
+  if (-not $Match.Success) {
+    return ""
+  }
+  return $Match.Groups[1].Value.Trim()
+}
+
 $EnvText = Get-Content ".env" -Raw
-if ($EnvText -match "TELEGRAM_BOT_TOKEN=\s*(\r?\n|$)" -or $EnvText -match "TELEGRAM_CHAT_ID=\s*(\r?\n|$)") {
-  Write-Host "Parece que falta completar TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID en .env."
-  Write-Host "El bot puede iniciar, pero no va a mandar alertas a Telegram hasta que eso este completo."
+$TelegramToken = Get-DotEnvValue $EnvText "TELEGRAM_BOT_TOKEN"
+$TelegramChatId = Get-DotEnvValue $EnvText "TELEGRAM_CHAT_ID"
+
+if (-not $TelegramToken) {
+  Write-Host "Falta TELEGRAM_BOT_TOKEN en .env."
+  Write-Host "Sin token, Telegram no puede funcionar. Pegalo desde BotFather y volve a iniciar."
+  Write-Host ""
+}
+elseif (-not $TelegramChatId) {
+  Write-Host "TELEGRAM_CHAT_ID esta vacio. Esto es normal en el primer arranque."
+  Write-Host "Deja esta terminal abierta, anda a Telegram y mandale /chatid a tu bot."
+  Write-Host "Despues copia ese numero en TELEGRAM_CHAT_ID, guarda .env y reinicia."
   Write-Host ""
 }
 
@@ -41,4 +63,3 @@ if (Test-Path $NpmCli) {
 } else {
   npm run dev
 }
-

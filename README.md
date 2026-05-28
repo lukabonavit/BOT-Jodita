@@ -119,6 +119,14 @@ Telegram bot ready
 WhatsApp disabled by WHATSAPP_ENABLED=false
 ```
 
+Tambien puede aparecer este aviso:
+
+```text
+TELEGRAM_CHAT_ID esta vacio. Esto es normal en el primer arranque.
+```
+
+Eso no es un error. Significa que ahora tenes que pedirle el chat id al bot.
+
 Ahora abri Telegram, entra al chat privado con tu bot y toca `Start` o mandale:
 
 ```text
