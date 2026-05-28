@@ -1,4 +1,5 @@
 import "dotenv/config";
+import fs from "node:fs";
 import path from "node:path";
 import type { RuntimeEnv } from "../core/types.js";
 
@@ -20,6 +21,24 @@ function logLevelFromEnv(value: string | undefined): RuntimeEnv["logLevel"] {
   return "info";
 }
 
+function detectBrowserExecutablePath(): string | undefined {
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    return process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
+
+  const candidates = [
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    process.env.LOCALAPPDATA
+      ? path.join(process.env.LOCALAPPDATA, "Google", "Chrome", "Application", "chrome.exe")
+      : undefined,
+    "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+  ].filter((candidate): candidate is string => Boolean(candidate));
+
+  return candidates.find((candidate) => fs.existsSync(candidate));
+}
+
 export function loadEnv(cwd = process.cwd()): RuntimeEnv {
   return {
     nodeEnv: process.env.NODE_ENV ?? "development",
@@ -29,7 +48,7 @@ export function loadEnv(cwd = process.cwd()): RuntimeEnv {
     whatsappEnabled: boolFromEnv(process.env.WHATSAPP_ENABLED, true),
     whatsappSessionName: process.env.WHATSAPP_SESSION_NAME ?? "bot-jodita",
     whatsappHeadless: boolFromEnv(process.env.WHATSAPP_HEADLESS, false),
-    puppeteerExecutablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+    puppeteerExecutablePath: detectBrowserExecutablePath(),
     openAiApiKey: process.env.OPENAI_API_KEY,
     openAiEnabled: boolFromEnv(process.env.OPENAI_ENABLED, true),
     openAiModel: process.env.OPENAI_MODEL ?? "gpt-4o-mini",

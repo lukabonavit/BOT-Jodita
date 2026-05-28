@@ -255,6 +255,17 @@ PUPPETEER_EXECUTABLE_PATH=C:\Program Files\Google\Chrome\Application\chrome.exe
 
 Si tu Chrome esta en otra carpeta, usar esa ruta.
 
+En Windows, BOT Jodita intenta detectar automaticamente:
+
+```text
+C:\Program Files\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files\Microsoft\Edge\Application\msedge.exe
+C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+```
+
+Si ves un error parecido a `Could not find Chrome`, revisa si Chrome esta instalado o completa `PUPPETEER_EXECUTABLE_PATH`.
+
 ## Paso 8: elegir grupos de WhatsApp
 
 Por defecto, BOT Jodita evalua todos los grupos de WhatsApp que ve tu cuenta, salvo los muteados.

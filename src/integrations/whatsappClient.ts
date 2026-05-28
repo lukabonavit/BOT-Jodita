@@ -55,7 +55,23 @@ export class WhatsAppClient {
       void this.handleMessage(message);
     });
 
-    void this.client.initialize();
+    if (this.env.puppeteerExecutablePath) {
+      this.logger.info("Using browser for WhatsApp", {
+        executablePath: this.env.puppeteerExecutablePath
+      });
+    }
+
+    this.client.initialize().catch((error: unknown) => {
+      const message = error instanceof Error ? error.message : String(error);
+      if (message.includes("Could not find Chrome")) {
+        this.logger.error(
+          "WhatsApp could not start because Chrome/Chromium was not found. Install Google Chrome or set PUPPETEER_EXECUTABLE_PATH in .env.",
+          { error: message }
+        );
+        return;
+      }
+      this.logger.error("WhatsApp could not start", { error: message });
+    });
   }
 
   private async handleMessage(message: Message): Promise<void> {
